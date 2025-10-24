@@ -10,9 +10,9 @@ const symbolCount = 15;
 
 const sLength = symbols.length;
 
-export const Matrix = () => {
-  const numColumns = window.innerWidth < 768 ? 5 : 10;
+const numColumns = 7;
 
+export const Matrix = () => {
   const arr = Array.from({ length: numColumns * symbolCount }, (_, i) => i);
 
   const symbolsListMostFlat = arr.map((el) => {
