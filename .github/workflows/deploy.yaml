@@ -20,6 +20,13 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Create .env file
+        run: |
+          touch .env  
+          echo NEXT_PUBLIC_STRAPI=${{ secrets.NEXT_PUBLIC_STRAPI }} >> .env
+          echo NEXT_PUBLIC_BACKEND=${{ secrets.NEXT_PUBLIC_BACKEND }} >> .env
+          cat .env
+
       - name: Build application
         run: npm run build
 
