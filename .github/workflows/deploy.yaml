@@ -44,4 +44,4 @@ jobs:
             sudo systemctl enable matrix.service
             sudo systemctl restart matrix.service
 
-            sudo sytemctl status matrix.service --no-pager
+            sudo systemctl status matrix.service --no-pager
