@@ -47,11 +47,11 @@
 //   };
 // }
 
-export default async function PostPage({ params }: Props) {
+export default async function PostPage() {
   // const { slug } = await params;
   // const postData = await getPostData(slug);
 
-  console.log(params.slug);
+  // console.log(params.slug);
 
   // if (!postData) {
   // notFound();
