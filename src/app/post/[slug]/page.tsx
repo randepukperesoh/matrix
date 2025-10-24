@@ -47,24 +47,24 @@
 //   };
 // }
 
-// export default async function PostPage({ params }: Props) {
-//   const { slug } = await params;
-//   const postData = await getPostData(slug);
+export default async function PostPage({ params }: Props) {
+  // const { slug } = await params;
+  // const postData = await getPostData(slug);
 
-//   console.log(params.slug);
+  console.log(params.slug);
 
-//   if (!postData) {
-//     notFound();
-//   }
+  // if (!postData) {
+  // notFound();
+  // }
 
-//   return (
-//     <div>
-//       <h1>{postData.title}</h1>
-//       <p>Slug: {postData.slug}</p>
-//       <div dangerouslySetInnerHTML={{ __html: postData.content }} />
-//     </div>
-//   );
-// }
+  return (
+    <div>
+      {/* <h1>{postData.title}</h1>
+      <p>Slug: {postData.slug}</p>
+      <div dangerouslySetInnerHTML={{ __html: postData.content }} /> */}
+    </div>
+  );
+}
 
 // export async function generateStaticParams() {
 //   return [
