@@ -27,8 +27,8 @@ jobs:
           echo NEXT_PUBLIC_BACKEND=${{ secrets.NEXT_PUBLIC_BACKEND }} >> .env
           cat .env
 
-      - name: Build application
-        run: npm run build
+      # - name: Build application
+      #   run: npm run build
 
       - name: Deploy to VPS and setup service
         uses: appleboy/ssh-action@v1.0.3
