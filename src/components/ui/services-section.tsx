@@ -23,9 +23,13 @@ interface IServiceResponse {
 
 const getMatrixService = async () => {
   const res = await fetch(
-    "http://localhost:1337/api/matrix-services?populate[services][populate]=list",
+    process.env.NEXT_PUBLIC_STRAPI +
+      "/matrix-services?populate[services][populate]=list",
     {
-      // cache: "no-store", // Отключить кэширование (если нужно)
+      cache: "force-cache",
+      headers: {
+        "Cache-Control": `public, s-maxage=${3600 * 24}, stale-while-revalidate=86400`,
+      },
     }
   );
 

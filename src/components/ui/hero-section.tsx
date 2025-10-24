@@ -1,5 +1,6 @@
 import { ArrowRight, Code2, Zap, Shield } from "lucide-react";
 import { Fragment } from "react";
+import { Matrix } from "../shared/MotionRain";
 
 interface Advantage {
   id: number;
@@ -26,8 +27,11 @@ interface IHeroResponse {
 }
 
 const getHero = async () => {
-  const res = await fetch("http://localhost:1337/api/hero?populate=*", {
-    // cache: "no-store", // Отключить кэширование (если нужно)
+  const res = await fetch(process.env.NEXT_PUBLIC_STRAPI + "/hero?populate=*", {
+    cache: "force-cache",
+    headers: {
+      "Cache-Control": `public, s-maxage=${3600 * 24}, stale-while-revalidate=86400`,
+    },
   });
 
   if (!res.ok) {
@@ -65,6 +69,9 @@ export async function HeroSection() {
         <div className="absolute w-96 h-96 bg-[#4ade80]/5 rounded-full blur-3xl bottom-20 -right-20" />
       </div>
 
+      {/* <MatrixRain /> */}
+
+      <Matrix />
       <div className="max-w-7xl mx-auto w-full relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div>
@@ -90,20 +97,24 @@ export async function HeroSection() {
             </p>
 
             <div className="flex flex-wrap gap-4 mb-12">
-              <button className="px-8 py-4 bg-[#4ade80] text-black rounded-lg hover:bg-[#3bc970] transition-all flex items-center gap-2 group">
-                <span style={{ fontSize: "16px", fontWeight: 600 }}>
-                  Обсудить проект
-                </span>
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </button>
-              <button className="px-8 py-4 bg-white/5 text-white border border-gray-800 rounded-lg hover:bg-white/10 hover:border-[#4ade80] transition-all">
-                <span style={{ fontSize: "16px", fontWeight: 600 }}>
-                  Наши работы
-                </span>
-              </button>
+              <a href="#contact">
+                <button className="px-8 py-4 bg-[#4ade80] text-black rounded-lg hover:bg-[#3bc970] transition-all flex items-center gap-2 group">
+                  <span style={{ fontSize: "16px", fontWeight: 600 }}>
+                    Обсудить проект
+                  </span>
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </button>
+              </a>
+              <a href="#cases">
+                <button className="px-8 py-4 bg-white/5 text-white border border-gray-800 rounded-lg hover:bg-white/10 hover:border-[#4ade80] transition-all">
+                  <span style={{ fontSize: "16px", fontWeight: 600 }}>
+                    Наши работы
+                  </span>
+                </button>
+              </a>
             </div>
 
-            <div className="flex gap-8">
+            <div className="flex gap-8 xs: flex-col sm:flex-col md:flex-row">
               {shortAdventages.map((el, i) => (
                 <Fragment key={el.title + "_" + i}>
                   <div>
@@ -126,7 +137,7 @@ export async function HeroSection() {
           </div>
 
           <div className="relative">
-            <div className="relative bg-gradient-to-br from-gray-900 to-black border border-gray-800 rounded-3xl p-8 backdrop-blur-sm">
+            <div className="relative bg-gradient-to-br from-gray-900 to-black border border-gray-800 rounded-3xl backdrop-blur-sm lg:p-8 md:p-4 sm:p-2 p-2">
               <div className="absolute -top-6 -right-6 w-32 h-32 bg-[#4ade80]/20 rounded-full blur-2xl" />
 
               <div className="space-y-4">

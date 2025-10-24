@@ -37,3 +37,45 @@ export interface IImage {
   updatedAt: string;
   publishedAt: string;
 }
+
+// types/lexical.ts (или в любом удобном месте)
+
+export type BaseNode = {
+  type: string;
+  version?: number; // Lexical может добавлять версию
+};
+
+export type TextNode = BaseNode & {
+  type: 'text';
+  text: string;
+  format?: number; // жирный, курсив и т.д.
+  style?: string;
+  mode?: 'normal' | 'segmented' | 'token' | 'code';
+  detail?: number;
+};
+
+export type ElementNode = BaseNode & {
+  children: LexicalNode[];
+};
+
+export type ParagraphNode = ElementNode & {
+  type: 'paragraph';
+};
+
+export type ListNode = ElementNode & {
+  type: 'list';
+  format?: string; // например, 'left', 'center', 'right'
+  indent?: number;
+  listType: 'bullet' | 'number';
+};
+
+export type ListItemNode = ElementNode & {
+  type: 'list-item';
+};
+
+export type AnyElementNode = ParagraphNode | ListNode | ListItemNode;
+
+export type LexicalNode = TextNode | AnyElementNode;
+
+// Тип для всего содержимого поля
+export type LexicalContent = LexicalNode[];

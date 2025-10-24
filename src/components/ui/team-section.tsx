@@ -25,9 +25,13 @@ interface ITeamResponse {
 
 const getTeam = async () => {
   const res = await fetch(
-    "http://localhost:1337/api/teams?populate[teams][populate][]=skill&populate[teams][populate][]=photo",
+    process.env.NEXT_PUBLIC_STRAPI +
+      "/teams?populate[teams][populate][]=skill&populate[teams][populate][]=photo",
     {
-      // cache: "no-store", // Отключить кэширование (если нужно)
+      cache: "force-cache",
+      headers: {
+        "Cache-Control": `public, s-maxage=${3600 * 24}, stale-while-revalidate=86400`,
+      },
     }
   );
 

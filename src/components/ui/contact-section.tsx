@@ -5,6 +5,7 @@ import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
 import { Button } from "./ui/button";
 import { toast } from "./ui/toast";
+import { env } from "process";
 
 const contactInfo = [
   {
@@ -16,14 +17,14 @@ const contactInfo = [
   {
     icon: Phone,
     title: "Телефон",
-    value: "+7 (495) 123-45-67",
-    description: "Пн-Пт с 9:00 до 18:00",
+    value: "+7 (918) 591-29-26",
+    description: "Пн-Вс с 00:00 до 23:59",
   },
   {
     icon: MapPin,
     title: "Офис",
-    value: "Москва, Пресненская наб. 12",
-    description: 'Деловой центр "Федерация"',
+    value: "Ожидается в ближайшем будущем",
+    description: "",
   },
 ];
 
@@ -32,35 +33,112 @@ export function ContactSection() {
     name: "",
     email: "",
     phone: "",
+    tg: "",
     message: "",
   });
+  const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const validate = () => {
+    const newErrors: Record<string, string> = {};
+
+    if (!formData.name.trim()) {
+      newErrors.name = "Имя обязательно";
+    } else if (formData.name.trim().length < 2) {
+      newErrors.name = "Имя должно содержать минимум 2 символа";
+    }
+
+    if (!formData.email.trim()) {
+      newErrors.email = "Email обязателен";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      newErrors.email = "Некорректный email";
+    }
+
+    if (formData.phone && !/^[\+]?[0-9\s\-\(\)]+$/.test(formData.phone)) {
+      newErrors.phone = "Некорректный номер телефона";
+    }
+
+    if (
+      formData.tg &&
+      !/^(t\.me\/[a-zA-Z0-9_]+|@[a-zA-Z0-9_]+)$/.test(formData.tg)
+    ) {
+      newErrors.tg =
+        "Введите корректную ссылку на Telegram (t.me/username или @username)";
+    }
+
+    if (!formData.message.trim()) {
+      newErrors.message = "Сообщение обязательно";
+    } else if (formData.message.trim().length < 10) {
+      newErrors.message = "Сообщение должно содержать минимум 10 символов";
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!validate()) {
+      return;
+    }
+
     setIsSubmitting(true);
 
-    // Симуляция отправки формы
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    try {
+      const response = await fetch(
+        process.env.NEXT_PUBLIC_BACKEND + "/send_form",
+        {
+          headers: { "Content-Type": "application/json" },
+          method: "POST",
+          body: JSON.stringify({
+            fio: formData.name,
+            number: formData.phone,
+            telegram_link: formData.tg,
+            message: formData.message,
+          }),
+        }
+      );
 
-    toast.success("Спасибо! Мы свяжемся с вами в ближайшее время.");
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
 
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      message: "",
-    });
-    setIsSubmitting(false);
+      toast.success("Спасибо! Мы свяжемся с вами в ближайшее время.");
+
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        message: "",
+        tg: "",
+      });
+      setErrors({});
+    } catch (error) {
+      console.error("Ошибка при отправке формы:", error);
+      toast.error("Произошла ошибка при отправке. Попробуйте снова.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
+    const { name, value } = e.target;
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value,
+      [name]: value,
     });
+
+    // Очищаем ошибку при вводе
+    if (errors[name]) {
+      setErrors((prev) => {
+        const newErrors = { ...prev };
+        delete newErrors[name];
+        return newErrors;
+      });
+    }
   };
 
   return (
@@ -139,12 +217,16 @@ export function ContactSection() {
                   id="name"
                   name="name"
                   type="text"
-                  required
                   value={formData.name}
                   onChange={handleChange}
-                  className="bg-[#0a0a0a] border-gray-800 text-white focus:border-[#4ade80] focus:ring-[#4ade80]/20"
+                  className={`bg-[#0a0a0a] border-gray-800 text-white focus:border-[#4ade80] focus:ring-[#4ade80]/20 ${
+                    errors.name ? "border-red-500" : ""
+                  }`}
                   placeholder="Иван Иванов"
                 />
+                {errors.name && (
+                  <p className="text-red-500 text-sm mt-1">{errors.name}</p>
+                )}
               </div>
 
               <div>
@@ -159,32 +241,67 @@ export function ContactSection() {
                   id="email"
                   name="email"
                   type="email"
-                  required
                   value={formData.email}
                   onChange={handleChange}
-                  className="bg-[#0a0a0a] border-gray-800 text-white focus:border-[#4ade80] focus:ring-[#4ade80]/20"
+                  className={`bg-[#0a0a0a] border-gray-800 text-white focus:border-[#4ade80] focus:ring-[#4ade80]/20 ${
+                    errors.email ? "border-red-500" : ""
+                  }`}
                   placeholder="ivan@example.com"
                 />
+                {errors.email && (
+                  <p className="text-red-500 text-sm mt-1">{errors.email}</p>
+                )}
               </div>
             </div>
 
-            <div className="mb-6">
-              <label
-                htmlFor="phone"
-                className="block text-white mb-2"
-                style={{ fontSize: "14px" }}
-              >
-                Телефон
-              </label>
-              <Input
-                id="phone"
-                name="phone"
-                type="tel"
-                value={formData.phone}
-                onChange={handleChange}
-                className="bg-[#0a0a0a] border-gray-800 text-white focus:border-[#4ade80] focus:ring-[#4ade80]/20"
-                placeholder="+7 (999) 123-45-67"
-              />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+              <div>
+                <label
+                  htmlFor="phone"
+                  className="block text-white mb-2"
+                  style={{ fontSize: "14px" }}
+                >
+                  Телефон
+                </label>
+                <Input
+                  id="phone"
+                  name="phone"
+                  type="tel"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  className={`bg-[#0a0a0a] border-gray-800 text-white focus:border-[#4ade80] focus:ring-[#4ade80]/20 ${
+                    errors.phone ? "border-red-500" : ""
+                  }`}
+                  placeholder="+7 (999) 123-45-67"
+                />
+                {errors.phone && (
+                  <p className="text-red-500 text-sm mt-1">{errors.phone}</p>
+                )}
+              </div>
+
+              <div>
+                <label
+                  htmlFor="tg"
+                  className="block text-white mb-2"
+                  style={{ fontSize: "14px" }}
+                >
+                  Ссылка на телеграмм
+                </label>
+                <Input
+                  id="tg"
+                  name="tg"
+                  type="text"
+                  value={formData.tg}
+                  onChange={handleChange}
+                  className={`bg-[#0a0a0a] border-gray-800 text-white focus:border-[#4ade80] focus:ring-[#4ade80]/20 ${
+                    errors.tg ? "border-red-500" : ""
+                  }`}
+                  placeholder="t.me/username | @username"
+                />
+                {errors.tg && (
+                  <p className="text-red-500 text-sm mt-1">{errors.tg}</p>
+                )}
+              </div>
             </div>
 
             <div className="mb-8">
@@ -198,13 +315,17 @@ export function ContactSection() {
               <Textarea
                 id="message"
                 name="message"
-                required
                 value={formData.message}
                 onChange={handleChange}
                 rows={6}
-                className="bg-[#0a0a0a] border-gray-800 text-white focus:border-[#4ade80] focus:ring-[#4ade80]/20 resize-none"
+                className={`bg-[#0a0a0a] border-gray-800 text-white focus:border-[#4ade80] focus:ring-[#4ade80]/20 resize-none ${
+                  errors.message ? "border-red-500" : ""
+                }`}
                 placeholder="Расскажите о вашем проекте..."
               />
+              {errors.message && (
+                <p className="text-red-500 text-sm mt-1">{errors.message}</p>
+              )}
             </div>
 
             <div className="flex flex-col sm:flex-row items-center gap-4">

@@ -2,6 +2,7 @@ import { CasesSection } from "@/components/ui/cases-section";
 import { ContactSection } from "@/components/ui/contact-section";
 import { Footer } from "@/components/ui/footer";
 import { HeroSection } from "@/components/ui/hero-section";
+import { ProductsSection } from "@/components/ui/producs-section";
 import { ServicesSection } from "@/components/ui/services-section";
 import { StatsSection } from "@/components/ui/stats-section";
 import { TeamSection } from "@/components/ui/team-section";
@@ -19,9 +20,15 @@ interface ISeoResponse {
 
 export async function generateMetadata(): Promise<import("next").Metadata> {
   try {
-    const res = await fetch("http://localhost:1337/api/home-seo?populate=*", {
-      // cache: "no-store", // Отключить кэширование (если нужно)
-    });
+    const res = await fetch(
+      process.env.NEXT_PUBLIC_STRAPI + "/home-seo?populate=*",
+      {
+        cache: "force-cache",
+        headers: {
+          "Cache-Control": `public, s-maxage=${3600 * 24}, stale-while-revalidate=86400`,
+        },
+      }
+    );
 
     if (!res.ok) {
       console.error(
@@ -59,6 +66,7 @@ const Home = async () => {
     <div className="size-full bg-black">
       <HeroSection />
       <ServicesSection />
+      <ProductsSection />
       <StatsSection />
       <CasesSection />
       <TeamSection />

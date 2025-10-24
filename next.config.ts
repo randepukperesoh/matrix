@@ -6,7 +6,7 @@ const nextConfig: NextConfig = {
       {
         protocol: 'http',
         hostname: 'localhost',
-        port: '1337', // Укажите порт вашего Strapi сервера
+        port: '1337', // Укажите порт вашего NEXT_PUBLIC_STRAPI сервера
         pathname: '/uploads/**', // Путь к папке uploads, где хранятся изображения
       },
     ],

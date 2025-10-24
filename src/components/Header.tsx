@@ -1,13 +1,15 @@
 "use client";
 import { useState } from "react";
-import { Menu, X, Code2 } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 const navigation = [
-  { name: "Услуги", href: "#services" },
-  { name: "Кейсы", href: "#cases" },
-  { name: "Команда", href: "#team" },
-  { name: "Контакты", href: "#contact" },
+  { name: "Услуги", href: "../#services" },
+  { name: "Продукты", href: "../#products" },
+  { name: "Кейсы", href: "../#cases" },
+  { name: "Команда", href: "../#team" },
+  { name: "Контакты", href: "../#contact" },
 ];
 
 export function Header() {
@@ -17,8 +19,9 @@ export function Header() {
     <header className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-lg border-b border-gray-800">
       <nav className="max-w-7xl mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          <Image src="./logo.svg" alt="12313" height={60} width={120} />
-
+          <Link href="..">
+            <Image src="./logo.svg" alt="12313" height={60} width={120} />
+          </Link>
           <div className="hidden md:flex items-center gap-8">
             {navigation.map((item) => (
               <a
@@ -32,12 +35,23 @@ export function Header() {
             ))}
           </div>
 
-          <div className="hidden md:block">
-            <button className="px-6 py-2.5 bg-[#4ade80] text-black rounded-lg hover:bg-[#3bc970] transition-all">
+          <div className="hidden md:flex items-center gap-3">
+            <Link
+              href="/brief"
+              className="px-6 py-2.5 bg-[#1a1a1a] text-white border border-gray-800 rounded-lg hover:border-[#4ade80] hover:text-[#4ade80] transition-all"
+            >
+              <span style={{ fontSize: "15px", fontWeight: 600 }}>
+                Заполнить бриф
+              </span>
+            </Link>
+            <Link
+              href="../#contact"
+              className="px-6 py-2.5 bg-[#4ade80] text-black rounded-lg hover:bg-[#3bc970] transition-all"
+            >
               <span style={{ fontSize: "15px", fontWeight: 600 }}>
                 Связаться
               </span>
-            </button>
+            </Link>
           </div>
 
           <button
@@ -67,11 +81,15 @@ export function Header() {
                   {item.name}
                 </a>
               ))}
-              <button className="px-6 py-2.5 bg-[#4ade80] text-black rounded-lg hover:bg-[#3bc970] transition-all w-full mt-2">
+              <Link
+                onClick={() => setMobileMenuOpen(false)}
+                href="/brief"
+                className="px-6 py-2.5 bg-[#4ade80] text-black rounded-lg hover:bg-[#3bc970] transition-all w-full mt-2"
+              >
                 <span style={{ fontSize: "15px", fontWeight: 600 }}>
-                  Связаться
+                  Заполнить бриф
                 </span>
-              </button>
+              </Link>
             </div>
           </div>
         )}
