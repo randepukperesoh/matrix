@@ -1,4 +1,4 @@
-import { Case } from "@/components/ui/cases-section";
+import { ICase } from "@/components/ui/cases-section";
 import Link from "next/link";
 
 export const CaseCard = ({
@@ -7,7 +7,7 @@ export const CaseCard = ({
   title,
   shortDescription,
   results,
-}: Case) => {
+}: ICase) => {
   return (
     <Link href={"/case/" + id}>
       <div className="bg-[#1a1a1a] border border-gray-800 rounded-2xl p-8 hover:border-[#4ade80] transition-all duration-300 group h-full flex flex-col">

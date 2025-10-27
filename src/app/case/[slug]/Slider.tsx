@@ -1,10 +1,10 @@
 "use client";
 import { useState, useEffect } from "react";
-import { Case } from "@/components/ui/cases-section";
+import { ICase } from "@/components/ui/cases-section";
 import Image from "next/image";
 
 type CaseSliderProps = {
-  mediaSlider: Case["mediaSlider"];
+  mediaSlider: ICase["mediaSlider"];
 };
 
 const AUTOPLAY_INTERVAL_MS = 5000;
