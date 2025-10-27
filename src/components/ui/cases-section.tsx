@@ -1,51 +1,41 @@
-import { IImage, LexicalContent } from "../shared/types";
+import { IImage, ISeo } from "../shared/types";
 import { CaseCard } from "../shared/ui/caseCard";
 
-export interface Case {
+export interface ICase {
   id: number;
   tag: string;
   title: string;
-  description: LexicalContent;
+  description: string;
   shortDescription: string;
   results: { item: string }[];
   mediaSlider: IImage[];
-}
-
-interface ICasesResponse {
-  id: number;
-  documentId: string;
-  title: string;
-  description: string;
-  createdAt: string; // или Date, если будете парсить
-  updatedAt: string; // или Date, если будете парсить
-  publishedAt: string; // или Date, если будете парсить
-  cases: Case[];
+  seo: ISeo;
 }
 
 export const getCases = async () => {
   const res = await fetch(
-    process.env.NEXT_PUBLIC_STRAPI +
-      "/our-case?populate[cases][populate]=results",
+    process.env.NEXT_PUBLIC_STRAPI + "/cases?populate=*",
     {
       cache: "force-cache",
       headers: {
-        "Cache-Control": `public, s-maxage=${3600 * 24}, stale-while-revalidate=86400`,
+        "Cache-Control": `public, s-maxage=${
+          3600 * 24
+        }, stale-while-revalidate=86400`,
       },
     }
   );
 
   if (!res.ok) {
-    throw new Error("Failed to fetch posts");
+    return [];
   }
 
   const data = await res.json();
 
-  return data.data as ICasesResponse;
+  return data.data as ICase[];
 };
 
 export async function CasesSection() {
-  const response = await getCases();
-  const { cases, title, description } = response;
+  const cases = await getCases();
 
   return (
     <section id="cases" className="bg-[#0a0a0a] py-24 px-6">
@@ -55,13 +45,14 @@ export async function CasesSection() {
             className="text-white mb-4"
             style={{ fontSize: "48px", fontWeight: 600, lineHeight: 1.2 }}
           >
-            {title}
+            Наши кейсы
           </h2>
           <p
             className="text-gray-400"
             style={{ fontSize: "18px", maxWidth: "600px" }}
           >
-            {description}
+            Реальные проекты, которые принесли измеримые результаты нашим
+            клиентам
           </p>
         </div>
 

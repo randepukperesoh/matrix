@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/ui/button";
 import * as SliderPrimitive from "@radix-ui/react-slider";
 import { Controller, useForm } from "react-hook-form";
 import clsx from "clsx";
+import { toast } from "sonner";
 
 const projectTypes = [
   {
@@ -93,15 +94,16 @@ export default function BriefForm() {
       timeframes: data.timeframe + "месяцев",
     };
 
-    console.log("Brief submitted:", briefData);
     try {
-      // const response = await fetch('/api/submit-brief', { method: 'POST', body: JSON.stringify(briefData) });
-      // if (response.ok) {
-      //   toast.success('Бриф отправлен! Мы свяжемся с вами в ближайшее время.');
-      //   // window.location.href = '/success-page'; // Пример перенаправления
-      // } else {
-      //   toast.error('Ошибка при отправке брифа.');
-      // }
+      const response = await fetch("/form", {
+        method: "POST",
+        body: JSON.stringify(briefData),
+      });
+      if (response.ok) {
+        toast.success("Бриф отправлен! Мы свяжемся с вами в ближайшее время.");
+      } else {
+        toast.error("Ошибка при отправке брифа.");
+      }
     } catch (error) {
       console.error("Error submitting brief:", error);
       // toast.error('Ошибка при отправке брифа.');

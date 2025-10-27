@@ -1,6 +1,6 @@
 import { Users, BarChart3, Building2, Smartphone } from "lucide-react";
 import Link from "next/link";
-import { IImage } from "../shared/types";
+import { IImage, ISeo } from "../shared/types";
 
 const iconMap = {
   Users: Users,
@@ -35,6 +35,7 @@ export type ProductItem = {
   techList: Tech[];
   advantages: Advantage[];
   icon: string;
+  seo: ISeo;
 };
 
 const getProducts = async () => {
@@ -43,7 +44,9 @@ const getProducts = async () => {
     {
       cache: "force-cache",
       headers: {
-        "Cache-Control": `public, s-maxage=${3600 * 24}, stale-while-revalidate=86400`,
+        "Cache-Control": `public, s-maxage=${
+          3600 * 24
+        }, stale-while-revalidate=86400`,
       },
     }
   );

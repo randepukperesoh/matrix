@@ -30,7 +30,9 @@ const getTeam = async () => {
     {
       cache: "force-cache",
       headers: {
-        "Cache-Control": `public, s-maxage=${3600 * 24}, stale-while-revalidate=86400`,
+        "Cache-Control": `public, s-maxage=${
+          3600 * 24
+        }, stale-while-revalidate=86400`,
       },
     }
   );
@@ -74,11 +76,13 @@ export async function TeamSection() {
               className="bg-[#0f0f0f] border border-gray-800 rounded-2xl overflow-hidden hover:border-[#4ade80] transition-all duration-300 group"
             >
               <div className="aspect-square bg-gradient-to-br from-gray-800 to-gray-900 relative overflow-hidden">
-                <ImageWithFallback
-                  src={`http://localhost:1337` + member.photo.url}
-                  alt={member.photo.name}
-                  className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-300"
-                />
+                {member.photo && (
+                  <ImageWithFallback
+                    src={process.env.NEXT_PUBLIC_STRAPI + member.photo?.url}
+                    alt={member.photo?.alternativeText}
+                    className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-300"
+                  />
+                )}
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0f0f0f] via-transparent to-transparent opacity-60" />
               </div>
 

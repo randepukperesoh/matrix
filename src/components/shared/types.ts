@@ -79,3 +79,9 @@ export type LexicalNode = TextNode | AnyElementNode;
 
 // Тип для всего содержимого поля
 export type LexicalContent = LexicalNode[];
+
+export interface ISeo {
+      title: string;
+      description: string;
+      keyword: string;
+    }

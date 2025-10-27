@@ -2,9 +2,8 @@ import { CaseCard } from "@/components/shared/ui/caseCard";
 import { getCases } from "@/components/ui/cases-section";
 
 export default async function Case() {
-  const response = await getCases();
+  const cases = await getCases();
 
-  const { cases } = response;
   return (
     <section className="relative bg-black min-h-screen flex items-start px-6 overflow-hidden pt-24">
       <div className="max-w-7xl mx-auto w-full relative z-10">

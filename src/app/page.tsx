@@ -1,3 +1,4 @@
+import { ISeo } from "@/components/shared/types";
 import { CasesSection } from "@/components/ui/cases-section";
 import { ContactSection } from "@/components/ui/contact-section";
 import { Footer } from "@/components/ui/footer";
@@ -10,11 +11,7 @@ import { TeamSection } from "@/components/ui/team-section";
 interface ISeoResponse {
   data: {
     id: number;
-    seo: {
-      title: string;
-      description: string;
-      keyword: string;
-    };
+    seo: ISeo;
   };
 }
 
@@ -25,7 +22,9 @@ export async function generateMetadata(): Promise<import("next").Metadata> {
       {
         cache: "force-cache",
         headers: {
-          "Cache-Control": `public, s-maxage=${3600 * 24}, stale-while-revalidate=86400`,
+          "Cache-Control": `public, s-maxage=${
+            3600 * 24
+          }, stale-while-revalidate=86400`,
         },
       }
     );
@@ -55,8 +54,8 @@ export async function generateMetadata(): Promise<import("next").Metadata> {
   } catch (error) {
     console.error("Error fetching SEO data:", error);
     return {
-      title: "Default Title",
-      description: "Default Description",
+      title: "Matrix",
+      description: "Matrix solution",
     };
   }
 }

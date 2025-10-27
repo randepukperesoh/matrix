@@ -51,8 +51,6 @@ export default async function PostPage() {
   // const { slug } = await params;
   // const postData = await getPostData(slug);
 
-  // console.log(params.slug);
-
   // if (!postData) {
   // notFound();
   // }

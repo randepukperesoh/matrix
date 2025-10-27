@@ -23,12 +23,13 @@ interface IServiceResponse {
 
 const getMatrixService = async () => {
   const res = await fetch(
-    process.env.NEXT_PUBLIC_STRAPI +
-      "/matrix-services?populate[services][populate]=list",
+    process.env.NEXT_PUBLIC_STRAPI + "/matrix-services/?populate=*",
     {
       cache: "force-cache",
       headers: {
-        "Cache-Control": `public, s-maxage=${3600 * 24}, stale-while-revalidate=86400`,
+        "Cache-Control": `public, s-maxage=${
+          3600 * 24
+        }, stale-while-revalidate=86400`,
       },
     }
   );
@@ -43,9 +44,8 @@ const getMatrixService = async () => {
 };
 
 export async function ServicesSection() {
-  const response = await getMatrixService();
+  const services = await getMatrixService();
 
-  const { services, title, tag, description } = response[0];
   return (
     <section
       id="services"
@@ -66,7 +66,7 @@ export async function ServicesSection() {
         <div className="text-center mb-16">
           <div className="inline-block px-4 py-2 bg-[#4ade80]/10 border border-[#4ade80]/20 rounded-full mb-4">
             <span className="text-[#4ade80]" style={{ fontSize: "14px" }}>
-              {tag}
+              Наши сервисы
             </span>
           </div>
 
@@ -74,13 +74,13 @@ export async function ServicesSection() {
             className="text-white mb-4"
             style={{ fontSize: "48px", fontWeight: 600, lineHeight: 1.2 }}
           >
-            {title}
+            Сервисы
           </h2>
           <p
             className="text-gray-400 mx-auto"
             style={{ fontSize: "18px", maxWidth: "700px" }}
           >
-            {description}
+            Наши разработки
           </p>
         </div>
 
@@ -111,14 +111,14 @@ export async function ServicesSection() {
                 </p>
 
                 <ul className="space-y-2">
-                  {service.list.map((feature, idx) => (
+                  {services.map((feature, idx) => (
                     <li
                       key={idx}
                       className="flex items-center gap-2 text-gray-300"
                       style={{ fontSize: "14px" }}
                     >
                       <div className="w-1.5 h-1.5 bg-[#4ade80] rounded-full" />
-                      {feature.item}
+                      {feature.title}
                     </li>
                   ))}
                 </ul>
