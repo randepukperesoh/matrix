@@ -13,7 +13,6 @@ export { generateMetadata };
 const Home = async () => {
   return (
     <div className="size-full bg-black mt-28 xl:mt-0">
-      ХУЙ
       <HeroSection />
       <ServicesSection />
       <ProductsSection />
