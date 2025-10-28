@@ -57,7 +57,7 @@ export async function ProductsSection() {
   if (!response) return null;
 
   return (
-    <section id="products" className="bg-black py-24 px-6">
+    <section id="products" className="bg-black py-12 md:py-24 px-6">
       <div className="max-w-7xl mx-auto">
         <div className="mb-16">
           <h2

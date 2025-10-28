@@ -51,7 +51,7 @@ export async function TeamSection() {
   const { teams: team, title, description } = response[0];
 
   return (
-    <section id="team" className="bg-[#000000] py-24 px-6">
+    <section id="team" className="bg-[#000000] py-12 md:py-24 px-6">
       <div className="max-w-7xl mx-auto">
         <div className="mb-16 text-center">
           <h2

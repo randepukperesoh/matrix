@@ -37,15 +37,15 @@ export function ContactSection() {
   return (
     <section
       id="contact"
-      className="bg-[#050505] py-24 px-6 relative overflow-hidden"
+      className="bg-[#050505] py-12 md:py-24 px-6 relative overflow-hidden"
     >
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute w-96 h-96 bg-[#4ade80]/5 rounded-full blur-3xl top-1/4 left-1/4" />
         <div className="absolute w-96 h-96 bg-[#4ade80]/5 rounded-full blur-3xl bottom-1/4 right-1/4" />
       </div>
 
-      <div className="max-w-7xl mx-auto relative z-10">
-        <div className="text-center mb-16">
+      <div className="max-w-7xl mx-auto relative z-10 flex flex-col gap-8">
+        <div className="text-center">
           <div className="inline-block px-4 py-2 bg-[#4ade80]/10 border border-[#4ade80]/20 rounded-full mb-4">
             <span className="text-[#4ade80]" style={{ fontSize: "14px" }}>
               Свяжитесь с нами
@@ -66,13 +66,13 @@ export function ContactSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+        <ContactForm />
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {contactInfo.map((item) => (
             <ContactCard key={"contact_" + item.title} {...item} />
           ))}
         </div>
-
-        <ContactForm />
       </div>
     </section>
   );

@@ -47,7 +47,7 @@ export async function ServicesSection() {
   return (
     <section
       id="services"
-      className="bg-[#050505] py-24 px-6 relative overflow-hidden"
+      className="bg-[#050505] py-12 md:py-24 px-6 relative overflow-hidden"
     >
       <div className="absolute inset-0 opacity-5">
         <div

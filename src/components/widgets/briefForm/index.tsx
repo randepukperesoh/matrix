@@ -13,33 +13,44 @@ import { toast } from "sonner";
 const projectTypes = [
   {
     id: "web",
-    label: "Веб-приложение",
-    description: "Сайты, порталы, веб-сервисы",
+    label: "Веб-разработка",
+    description:
+      "Создание frontend и backend компонентов веб-сайтов и веб-приложений",
   },
   {
     id: "mobile",
-    label: "Мобильное приложение",
-    description: "iOS и Android приложения",
+    label: "Мобильные и десктоп приложения",
+    description:
+      "Разработка, внедрение и сопровождение десктоп и мобильных приложений",
   },
   {
-    id: "crm",
-    label: "CRM-система",
-    description: "Управление клиентами и продажами",
+    id: "bot",
+    label: "Разработка ботов",
+    description:
+      "Разработка, внедрение и сопровождение десктоп и мобильных приложений",
   },
   {
-    id: "erp",
-    label: "ERP-система",
-    description: "Управление ресурсами предприятия",
+    id: "ui_ux",
+    label: "UI/UX разработка",
+    description:
+      "Создание продуманного и эстетичного пользовательского интерфейса",
   },
   {
-    id: "analytics",
-    label: "Аналитическая платформа",
-    description: "Обработка и анализ данных",
+    id: "seo",
+    label: "SEO",
+    description: "Настройка и оптимизация SEO сайтов",
   },
   {
-    id: "integration",
-    label: "Интеграция систем",
-    description: "Объединение существующих систем",
+    id: "ML",
+    label: "Data Science и ML",
+    description:
+      "Создание модулей и приложений на основе технологий машинного обучения для автоматизации и оптимизации.",
+  },
+  {
+    id: "ya_smm",
+    label: "Яндекс Директ",
+    description:
+      "Регистрация и продвижения продукта с помощью сервисов Яндекса",
   },
 ];
 
@@ -50,7 +61,6 @@ const timeframes = [
   { id: "12+", label: "Более 12 месяцев", description: "Комплексное решение" },
 ];
 
-// Тип для данных формы
 interface BriefFormData {
   projectType: string;
   budget: number[];
@@ -187,32 +197,16 @@ export default function BriefForm() {
             }}
           />
         </div>
-        <h2
-          className="text-white mb-6"
-          style={{ fontSize: "32px", fontWeight: 600 }}
-        >
-          Бюджет и сроки
-        </h2>
-        <p className="text-gray-400 mb-8" style={{ fontSize: "16px" }}>
-          Укажите планируемый бюджет и желаемые сроки реализации
-        </p>
 
         <div className="space-y-10">
           <div>
-            <Label
-              className="text-white mb-4 block"
-              style={{ fontSize: "15px" }}
-            >
-              Бюджет проекта
-            </Label>
             <div className="mb-6">
-              <div
-                className="text-[#4ade80] mb-4"
-                style={{ fontSize: "24px", fontWeight: 600 }}
+              <h2
+                className="text-white mb-6"
+                style={{ fontSize: "32px", fontWeight: 600 }}
               >
-                {/* {getBudgetLabel(budget)} */}
-              </div>
-
+                Бюджет
+              </h2>
               <Controller
                 name="budget"
                 control={control}
@@ -246,12 +240,12 @@ export default function BriefForm() {
           </div>
 
           <div>
-            <Label
-              className="text-white mb-4 block"
-              style={{ fontSize: "15px" }}
+            <h2
+              className="text-white mb-6"
+              style={{ fontSize: "32px", fontWeight: 600 }}
             >
               Сроки реализации
-            </Label>
+            </h2>
             <Controller
               name="timeframe"
               control={control}

@@ -66,9 +66,9 @@ export async function HeroSection() {
 
   return (
     <section className="relative bg-black min-h-screen flex items-center px-6 overflow-hidden">
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute w-96 h-96 bg-[#4ade80]/10 rounded-full blur-3xl top-20 -left-20" />
-        <div className="absolute w-96 h-96 bg-[#4ade80]/5 rounded-full blur-3xl bottom-20 -right-20" />
+      <div>
+        <div className="bg-[#4ade80]/10 rounded-full blur-3xl top-20 -left-20" />
+        <div className="bg-[#4ade80]/5 rounded-full blur-3xl bottom-20 -right-20" />
       </div>
 
       <Matrix />
@@ -129,7 +129,7 @@ export async function HeroSection() {
                     </div>
                   </div>
                   {i !== shortAdventages.length - 1 && (
-                    <div className="w-px bg-gray-800" />
+                    <div className="hidden sm:block w-px bg-gray-800" />
                   )}
                 </Fragment>
               ))}
@@ -137,7 +137,7 @@ export async function HeroSection() {
           </div>
 
           <div className="relative">
-            <div className="relative bg-linear-to-br from-gray-900 to-black border border-gray-800 rounded-3xl backdrop-blur-sm lg:p-8 md:p-4 sm:p-2 p-2">
+            <div className="relative bg-linear-to-br mb-4 from-gray-900 to-black border border-gray-800 rounded-3xl backdrop-blur-sm lg:p-8 md:p-4 sm:p-2 p-2">
               <div className="absolute -top-6 -right-6 w-32 h-32 bg-[#4ade80]/20 rounded-full blur-2xl" />
 
               <div className="space-y-4">
