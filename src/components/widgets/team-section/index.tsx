@@ -1,5 +1,6 @@
 import { IImage } from "@/components/shared/types";
 import { TeamCard } from "@/components/enteties/teamCard";
+import LightRain from "@/components/shared/backgrounds/lightRain/LightRain";
 
 export interface TeamMember {
   id: number;
@@ -51,8 +52,12 @@ export async function TeamSection() {
   const { teams: team, title, description } = response[0];
 
   return (
-    <section id="team" className="bg-[#000000] py-12 md:py-24 px-6">
-      <div className="max-w-7xl mx-auto">
+    <section id="team" className="bg-[#000000] relative py-12 md:py-24 px-6">
+      <div className="absolute inset-0 overflow-hidden">
+        <LightRain />
+      </div>
+
+      <div className="max-w-7xl mx-auto relative z-10">
         <div className="mb-16 text-center">
           <h2
             className="text-white mb-4"

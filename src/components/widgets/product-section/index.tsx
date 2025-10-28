@@ -1,5 +1,6 @@
 import { ProductCard } from "@/components/enteties/productCard";
 import { Advantage, Function, ProductItem, Tech, getProducts } from "./lib";
+import MotionLight from "@/components/shared/backgrounds/light";
 
 export { type Advantage, type Function, type ProductItem, type Tech };
 
@@ -10,9 +11,11 @@ export async function ProductsSection() {
 
   return (
     <section id="products" className="py-12 md:py-24 px-6 w-full relative">
-      <div className="absolute inset-0 z-10"></div>
+      <div className="absolute inset-0">
+        <MotionLight />
+      </div>
 
-      <div className="max-w-7xl mx-auto flex flex-col relative z-1000">
+      <div className="max-w-7xl mx-auto flex flex-col relative z-10">
         <div className="mb-16">
           <h2
             className="text-white mb-4"
