@@ -80,7 +80,7 @@ export const ProductCard = ({
             className="text-white"
             style={{ fontSize: "18px", fontWeight: 600 }}
           >
-            от {price}Р в мес
+            от {price} рублей
           </span>
           <span
             className="text-[#4ade80] group-hover:translate-x-1 transition-transform"
