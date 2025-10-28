@@ -1,6 +1,6 @@
 import { ArrowRight, Code2, Zap, Shield } from "lucide-react";
 import { Fragment } from "react";
-import { Matrix } from "../shared/backgrounds/MotionRain";
+import MotionRain from "../shared/backgrounds/rain";
 
 interface Advantage {
   id: number;
@@ -71,7 +71,7 @@ export async function HeroSection() {
         <div className="bg-[#4ade80]/5 rounded-full blur-3xl bottom-20 -right-20" />
       </div>
 
-      <Matrix />
+      <MotionRain />
       <div className="max-w-7xl mx-auto w-full relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div>

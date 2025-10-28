@@ -1,6 +1,6 @@
 import { ProductCard } from "@/components/enteties/productCard";
 import { Advantage, Function, ProductItem, Tech, getProducts } from "./lib";
-import DynamicFaultyTerminal from "@/components/shared/backgrounds/FaultyTerminal";
+import DynamicFaultyTerminal from "@/components/shared/backgrounds/faultyTerminal";
 
 export { type Advantage, type Function, type ProductItem, type Tech };
 
