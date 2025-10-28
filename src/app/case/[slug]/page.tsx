@@ -1,78 +1,15 @@
 import { notFound } from "next/navigation";
 import { CaseSlider } from "./Slider";
-import { Metadata } from "next";
-import { getCaseData } from "./getCaseData";
-// Импортируем функцию получения данных
+import { generateMetadata, getCaseData } from "./lib";
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { slug: string };
-}): Promise<Metadata> {
-  const caseId = params.slug;
-  // Теперь getCaseData доступна
-  const caseData = await getCaseData(caseId);
-
-  if (!caseData) {
-    return {
-      title: "Case Not Found",
-      description: "The requested case was not found.",
-    };
-  }
-
-  const seo = caseData.seo || {};
-
-  return {
-    title: seo.title || caseData.title,
-    description: seo.description || caseData.description,
-    openGraph: {
-      title: seo.title || caseData.title,
-      description: seo.description || caseData.description,
-      type: "article", // или 'website', в зависимости от контекста
-      // url: `https://yourdomain.com/cases/${caseId}`, // Опционально
-      // images: seo.og_image
-      //   ? [
-      //       {
-      //         url:
-      //           typeof seo.og_image === "string"
-      //             ? seo.og_image
-      //             : seo.og_image.url || "", // Адаптируйте под структуру вашего изображения
-      //         width: seo.og_image.width, // Если доступно
-      //         height: seo.og_image.height, // Если доступно
-      //         alt: seo.og_image.alternativeText || caseData.title,
-      //       },
-      //     ]
-      //   : undefined,
-    },
-    // twitter: {
-    //   card: seo.twitter_card_type || "summary_large_image", // Предполагаем, что у вас есть такое поле в SEO
-    //   title: seo.twitter_title || seo.title || caseData.title,
-    //   description:
-    //     seo.twitter_description || seo.description || caseData.description,
-    //   images: seo.twitter_image
-    //     ? [
-    //         {
-    //           url:
-    //             typeof seo.twitter_image === "string"
-    //               ? seo.twitter_image
-    //               : seo.twitter_image.url || "",
-    //           alt: seo.twitter_image.alternativeText || caseData.title,
-    //         },
-    //       ]
-    //     : undefined,
-    // },
-    // Добавьте другие поля, если они есть в вашем SEO объекте
-    keywords: seo.keyword, // Предполагаем, что у вас есть такое поле
-    // ... другие мета-теги
-  };
-}
+export { generateMetadata };
 
 export default async function CasePage({
   params,
 }: {
   params: { slug: string };
 }) {
-  const caseId = params.slug;
+  const { slug: caseId } = await params;
 
   const caseData = await getCaseData(caseId);
 

@@ -1,10 +1,10 @@
 "use client";
 import { useState, useEffect } from "react";
-import { ICase } from "@/components/ui/cases-section";
 import Image from "next/image";
+import { IImage } from "@/components/shared/types";
 
 type CaseSliderProps = {
-  mediaSlider: ICase["mediaSlider"];
+  mediaSlider: IImage[];
 };
 
 const AUTOPLAY_INTERVAL_MS = 5000;
@@ -38,7 +38,7 @@ export function CaseSlider({ mediaSlider }: CaseSliderProps) {
     <div className="flex flex-col gap-6 w-full max-w-4xl mx-auto pb-10">
       <div className="relative w-full h-96 md:h-[500px] bg-gray-800 rounded-lg overflow-hidden">
         <Image
-          src={`http://localhost:1337` + currentImage.url}
+          src={currentImage.url}
           alt={currentImage.alternativeText || "Case media"}
           fill
           className="object-cover"

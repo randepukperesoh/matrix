@@ -1,15 +1,15 @@
-import { ICase } from "@/components/ui/cases-section";
+import { ICase } from "@/components/widgets/cases-section";
 import Link from "next/link";
 
 export const CaseCard = ({
-  id,
   tag,
   title,
   shortDescription,
   results,
+  documentId,
 }: ICase) => {
   return (
-    <Link href={"/case/" + id}>
+    <Link href={"/case/" + documentId}>
       <div className="bg-[#1a1a1a] border border-gray-800 rounded-2xl p-8 hover:border-[#4ade80] transition-all duration-300 group h-full flex flex-col">
         <div className="mb-4">
           <span
@@ -28,7 +28,7 @@ export const CaseCard = ({
         </h3>
 
         <p
-          className="text-gray-300 mb-6 flex-grow"
+          className="text-gray-300 mb-6 grow"
           style={{ fontSize: "16px", lineHeight: 1.6 }}
         >
           {shortDescription}

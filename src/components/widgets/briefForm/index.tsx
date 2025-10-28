@@ -5,7 +5,6 @@ import { Label } from "@/components/ui/ui/label";
 import { Input } from "@/components/ui/ui/input";
 import { Textarea } from "@/components/ui/ui/textarea";
 import { Button } from "@/components/ui/ui/button";
-
 import * as SliderPrimitive from "@radix-ui/react-slider";
 import { Controller, useForm } from "react-hook-form";
 import clsx from "clsx";
@@ -229,7 +228,7 @@ export default function BriefForm() {
                     step={0.5}
                   >
                     <SliderPrimitive.Track className="relative grow rounded-full bg-gray-700 h-2 overflow-hidden">
-                      <SliderPrimitive.Range className="absolute h-full bg-gradient-to-r from-[#4ade80] to-[#22c55e] rounded-full" />
+                      <SliderPrimitive.Range className="absolute h-full bg-linear-to-r from-[#4ade80] to-[#22c55e] rounded-full" />
                     </SliderPrimitive.Track>
                     <SliderPrimitive.Thumb className="block h-5 w-5 rounded-full border-2 border-[#4ade80] bg-[#4ade80] transition-colors focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50" />
                   </SliderPrimitive.Root>
@@ -443,7 +442,7 @@ export default function BriefForm() {
         <Button
           type="submit"
           disabled={isSubmitting}
-          className="w-full md:w-auto px-8 py-4 bg-gradient-to-r from-[#4ade80] to-[#22c55e] text-black rounded-lg hover:opacity-90 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+          className="w-full md:w-auto px-8 py-4 bg-linear-to-r from-[#4ade80] to-[#22c55e] text-black rounded-lg hover:opacity-90 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
         >
           <span
             className="flex items-center justify-center gap-2"

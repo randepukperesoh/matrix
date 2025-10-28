@@ -30,7 +30,9 @@ const getHero = async () => {
   const res = await fetch(process.env.NEXT_PUBLIC_STRAPI + "/hero?populate=*", {
     cache: "force-cache",
     headers: {
-      "Cache-Control": `public, s-maxage=${3600 * 24}, stale-while-revalidate=86400`,
+      "Cache-Control": `public, s-maxage=${
+        3600 * 24
+      }, stale-while-revalidate=86400`,
     },
   });
 
@@ -68,8 +70,6 @@ export async function HeroSection() {
         <div className="absolute w-96 h-96 bg-[#4ade80]/10 rounded-full blur-3xl top-20 -left-20" />
         <div className="absolute w-96 h-96 bg-[#4ade80]/5 rounded-full blur-3xl bottom-20 -right-20" />
       </div>
-
-      {/* <MatrixRain /> */}
 
       <Matrix />
       <div className="max-w-7xl mx-auto w-full relative z-10">
@@ -137,7 +137,7 @@ export async function HeroSection() {
           </div>
 
           <div className="relative">
-            <div className="relative bg-gradient-to-br from-gray-900 to-black border border-gray-800 rounded-3xl backdrop-blur-sm lg:p-8 md:p-4 sm:p-2 p-2">
+            <div className="relative bg-linear-to-br from-gray-900 to-black border border-gray-800 rounded-3xl backdrop-blur-sm lg:p-8 md:p-4 sm:p-2 p-2">
               <div className="absolute -top-6 -right-6 w-32 h-32 bg-[#4ade80]/20 rounded-full blur-2xl" />
 
               <div className="space-y-4">
@@ -146,7 +146,7 @@ export async function HeroSection() {
                     key={el.title + "_" + i}
                     className="flex items-center gap-4 p-4 bg-[#1a1a1a] rounded-xl border border-gray-800"
                   >
-                    <div className="w-12 h-12 bg-[#4ade80]/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <div className="w-12 h-12 bg-[#4ade80]/10 rounded-lg flex items-center justify-center shrink-0">
                       {svgArr[i]}
                     </div>
                     <div className="flex-1">
@@ -173,7 +173,7 @@ export async function HeroSection() {
                 ))}
               </div>
 
-              <div className="mt-6 p-4 bg-gradient-to-r from-[#4ade80]/10 to-transparent border border-[#4ade80]/20 rounded-xl">
+              <div className="mt-6 p-4 bg-linear-to-r from-[#4ade80]/10 to-transparent border border-[#4ade80]/20 rounded-xl">
                 <div
                   className="text-[#4ade80] mb-1"
                   style={{ fontSize: "14px", fontWeight: 600 }}

@@ -4,10 +4,10 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: 'http',
-        hostname: 'localhost',
-        port: '1337', // Укажите порт вашего NEXT_PUBLIC_STRAPI сервера
-        pathname: '/uploads/**', // Путь к папке uploads, где хранятся изображения
+        protocol: 'https',
+        hostname: 'productive-success-86db1bbd31.media.strapiapp.com',
+        // port: '1337',
+        pathname: '/**', 
       },
     ],
   },

@@ -6,11 +6,11 @@ const symbols =
     ""
   );
 
-const symbolCount = 15;
+const symbolCount = 10;
 
 const sLength = symbols.length;
 
-const numColumns = 7;
+const numColumns = 4;
 
 export const Matrix = () => {
   const arr = Array.from({ length: numColumns * symbolCount }, (_, i) => i);

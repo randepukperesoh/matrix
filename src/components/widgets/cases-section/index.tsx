@@ -1,5 +1,5 @@
-import { IImage, ISeo } from "../shared/types";
-import { CaseCard } from "../shared/ui/caseCard";
+import { CaseCard } from "@/components/enteties/caseCard";
+import { IImage, ISeo } from "@/components/shared/types";
 
 export interface ICase {
   id: number;
@@ -10,6 +10,7 @@ export interface ICase {
   results: { item: string }[];
   mediaSlider: IImage[];
   seo: ISeo;
+  documentId: string;
 }
 
 export const getCases = async () => {
@@ -36,6 +37,8 @@ export const getCases = async () => {
 
 export async function CasesSection() {
   const cases = await getCases();
+
+  console.log(cases);
 
   return (
     <section id="cases" className="bg-[#0a0a0a] py-24 px-6">
