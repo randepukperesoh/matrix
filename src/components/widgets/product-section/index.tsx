@@ -1,5 +1,6 @@
 import { ProductCard } from "@/components/enteties/productCard";
 import { Advantage, Function, ProductItem, Tech, getProducts } from "./lib";
+import FaultyTerminal from "@/components/shared/backgrounds/FaultyTerminal";
 
 export { type Advantage, type Function, type ProductItem, type Tech };
 
@@ -9,8 +10,29 @@ export async function ProductsSection() {
   if (!response) return null;
 
   return (
-    <section id="products" className="bg-black py-12 md:py-24 px-6">
-      <div className="max-w-7xl mx-auto">
+    <section id="products" className="py-12 md:py-24 px-6 w-full relative">
+      <div className="absolute inset-0 z-10">
+        <FaultyTerminal
+          scale={5.5}
+          gridMul={[0.52, 1]}
+          digitSize={1.2}
+          timeScale={0.25}
+          pause={false}
+          scanlineIntensity={1}
+          glitchAmount={1}
+          flickerAmount={1}
+          noiseAmp={0.25}
+          chromaticAberration={0}
+          dither={0}
+          curvature={0.1}
+          tint="#00FF41"
+          pageLoadAnimation={false}
+          brightness={1}
+          className="w-full h-full "
+        />
+      </div>
+
+      <div className="max-w-7xl mx-auto flex flex-col relative z-1000">
         <div className="mb-16">
           <h2
             className="text-white mb-4"

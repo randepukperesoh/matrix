@@ -1,6 +1,6 @@
 import { ArrowRight, Code2, Zap, Shield } from "lucide-react";
 import { Fragment } from "react";
-import { Matrix } from "../shared/MotionRain";
+import { Matrix } from "../shared/backgrounds/MotionRain";
 
 interface Advantage {
   id: number;
