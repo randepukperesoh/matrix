@@ -23,7 +23,7 @@ export const ProductCard = ({
 
   return (
     <Link key={id + description} href={`/product/${documentId}`}>
-      <div className="bg-[#0a0a0a] border border-gray-800 rounded-2xl p-8 hover:border-[#4ade80] transition-all duration-300 group cursor-pointer">
+      <div className="bg-[#0a0a0a] border border-gray-800 rounded-2xl p-8 hover:border-[#4ade80] transition-all duration-300 group cursor-pointer h-full flex flex-col">
         <div className="flex items-start gap-4 mb-6 flex-col sm:flex-row">
           <div className="w-14 h-14 bg-linear-to-br from-[#4ade80] to-[#22c55e] rounded-xl flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-300">
             <Icon className="w-7 h-7 text-black" />
@@ -44,7 +44,7 @@ export const ProductCard = ({
         </div>
 
         <p
-          className="text-gray-300 mb-6"
+          className="text-gray-300 mb-6 grow"
           style={{ fontSize: "16px", lineHeight: 1.6 }}
         >
           {description}
@@ -75,7 +75,7 @@ export const ProductCard = ({
           </ul>
         </div>
 
-        <div className="flex items-center justify-between flex-col sm:flex-row">
+        <div className="flex items-center justify-between flex-col sm:flex-row mt-auto">
           <span
             className="text-white"
             style={{ fontSize: "18px", fontWeight: 600 }}

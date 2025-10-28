@@ -19,8 +19,8 @@ export const TeamCard = ({
       <div className="aspect-square bg-linear-to-br from-gray-800 to-gray-900 relative overflow-hidden">
         {photo && (
           <Image
-            width={100}
-            height={150}
+            width={350}
+            height={350}
             src={photo.url}
             alt={photo?.alternativeText || "alt"}
             className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-300"

@@ -100,8 +100,8 @@ export default async function ProductPage({
               <div className="aspect-4/3 rounded-2xl overflow-hidden border border-gray-800">
                 {product.photo && (
                   <Image
-                    width={200}
-                    height={150}
+                    width={500}
+                    height={350}
                     src={product.photo.url}
                     alt={product.photo.alternativeText || product.title}
                     className="w-full h-full object-cover"

@@ -1,7 +1,23 @@
 import { IServiceResponse } from "@/components/widgets/service-section";
-import { Database, Workflow, BarChart3, Lock, Cloud, Cog } from "lucide-react";
+import {
+  Workflow,
+  BarChart3,
+  Lock,
+  Cloud,
+  Cog,
+  AirplayIcon,
+  DicesIcon,
+} from "lucide-react";
 
-const serviceIcons = [Database, Workflow, BarChart3, Cloud, Cog, Lock];
+const serviceIcons = [
+  AirplayIcon,
+  DicesIcon,
+  Workflow,
+  BarChart3,
+  Cloud,
+  Cog,
+  Lock,
+];
 
 interface ISectionCard extends IServiceResponse {
   i: number;
