@@ -14,7 +14,7 @@ export async function ProductsSection() {
       <div className="absolute inset-0 z-10">
         <DynamicFaultyTerminal
           scale={5.5}
-          gridMul={[0.52, 1]}
+          gridMul={[0.25, 0.25]}
           digitSize={1.2}
           timeScale={0.25}
           pause={false}
@@ -23,6 +23,7 @@ export async function ProductsSection() {
           flickerAmount={1}
           noiseAmp={0.25}
           chromaticAberration={0}
+          mouseReact={false}
           dither={0}
           curvature={0.1}
           tint="#00FF41"
