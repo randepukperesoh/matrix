@@ -17,6 +17,13 @@ const serviceIcons = [
   Cloud,
   Cog,
   Lock,
+  AirplayIcon,
+  DicesIcon,
+  Workflow,
+  BarChart3,
+  Cloud,
+  Cog,
+  Lock,
 ];
 
 interface ISectionCard extends IServiceResponse {
