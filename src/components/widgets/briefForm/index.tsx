@@ -41,7 +41,7 @@ const projectTypes = [
     description: "Настройка и оптимизация SEO сайтов",
   },
   {
-    id: "ML",
+    id: "ml",
     label: "Data Science и ML",
     description:
       "Создание модулей и приложений на основе технологий машинного обучения для автоматизации и оптимизации.",
@@ -104,9 +104,11 @@ export default function BriefForm() {
     };
 
     try {
-      const response = await fetch("/form", {
+      const url = process.env.NEXT_PUBLIC_BACKEND + "/send_form_topic";
+      const response = await fetch(url, {
         method: "POST",
         body: JSON.stringify(briefData),
+        headers: { "Content-Type": "application/json" },
       });
       if (response.ok) {
         toast.success("Бриф отправлен! Мы свяжемся с вами в ближайшее время.");
