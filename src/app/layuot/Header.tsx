@@ -1,4 +1,3 @@
-import { LogoIcon } from "../shared/icon/LogoIcon";
 import * as React from "react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
@@ -8,6 +7,7 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
 } from "@/components/ui/navigation-menu";
+import Image from "next/image";
 
 const MainMenu = () => {
   return (
@@ -15,7 +15,7 @@ const MainMenu = () => {
       <NavigationMenuList className="w-full justify-between gap-5">
         <NavigationMenuItem>
           <Link href="/" legacyBehavior passHref>
-            <LogoIcon height="14px" width="66.88px" />
+            <Image src="logo.svg" height={14} width={66.88} alt="Matrix logo" />
           </Link>
         </NavigationMenuItem>
 

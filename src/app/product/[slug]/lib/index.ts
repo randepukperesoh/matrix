@@ -8,7 +8,7 @@ export const getProduct = async (slug: string) => {
     cache: "force-cache",
     headers: {
       "Cache-Control": `public, s-maxage=${
-        3600 * 24
+        3600 
       }, stale-while-revalidate=86400`,
     },
   });
@@ -32,6 +32,25 @@ export async function generateMetadata({
     return {
       title: "Продукт не найден",
       description: "Запрашиваемый продукт не существует.",
+      openGraph: {
+        title: "Matrix solutions",
+        description: "Разрабатываем CRM и корпоративные системы под ключ. Автоматизируем процессы и увеличиваем эффективность вашего бизнеса.",
+        type: "website",
+        images: [
+          {
+            url: "/logo.svg",
+            width: 1200,
+            height: 630,
+            alt: "Matrix Logo",
+          },
+        ],
+      },
+      twitter: {
+        card: "summary_large_image", 
+        title: "Matrix",
+        description: "Matrix solutions",
+        images: "/logo.svg", 
+      },
     };
   }
 

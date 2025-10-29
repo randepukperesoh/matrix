@@ -8,7 +8,7 @@ export async function getCaseData(id: string): Promise<ICase | null> {
     cache: "force-cache",
 
     headers: {
-      "Cache-Control": `public, s-maxage=${3600 * 24}, stale-while-revalidate=86400`,
+      "Cache-Control": `public, s-maxage=${3600 }, stale-while-revalidate=86400`,
     },
   });
 
@@ -41,11 +41,25 @@ export async function generateMetadata({
   return {
     title: seo.title || caseData.title,
     description: seo.description || caseData.description,
-    openGraph: {
-      title: seo.title || caseData.title,
-      description: seo.description || caseData.description,
-      type: "article",
-    },
+openGraph: {
+        title: "Matrix solutions",
+        description: "Разрабатываем CRM и корпоративные системы под ключ. Автоматизируем процессы и увеличиваем эффективность вашего бизнеса.",
+        type: "website",
+        images: [
+          {
+            url: "/logo.svg",
+            width: 1200,
+            height: 630,
+            alt: "Matrix Logo",
+          },
+        ],
+      },
+      twitter: {
+        card: "summary_large_image", 
+        title: "Matrix",
+        description: "Matrix solutions",
+        images: "/logo.svg", 
+      },
     keywords: seo.keyword,
   };
 }

@@ -16,7 +16,7 @@ export async function generateMetadata(): Promise<Metadata> {
         cache: "force-cache",
         headers: {
           "Cache-Control": `public, s-maxage=${
-            3600 * 24
+            3600 
           }, stale-while-revalidate=86400`,
         },
       }
@@ -43,6 +43,25 @@ export async function generateMetadata(): Promise<Metadata> {
       title,
       description,
       other: keywords ? { keywords } : undefined,
+      openGraph: {
+        title: "Matrix solutions",
+        description: "Разрабатываем CRM и корпоративные системы под ключ. Автоматизируем процессы и увеличиваем эффективность вашего бизнеса.",
+        type: "website",
+        images: [
+          {
+            url: "/logo.svg",
+            width: 1200,
+            height: 630,
+            alt: "Matrix Logo",
+          },
+        ],
+      },
+      twitter: {
+        card: "summary_large_image", 
+        title: "Matrix",
+        description: "Matrix solutions",
+        images: "/logo.svg", 
+      },
     };
   } catch (error) {
     console.error("Error fetching SEO data:", error);
