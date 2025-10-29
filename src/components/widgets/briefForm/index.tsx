@@ -220,8 +220,8 @@ export default function BriefForm() {
                       field.onChange(value);
                     }}
                     max={5}
-                    min={0.5}
-                    step={0.5}
+                    min={0.1}
+                    step={0.1}
                   >
                     <SliderPrimitive.Track className="relative grow rounded-full bg-gray-700 h-2 overflow-hidden">
                       <SliderPrimitive.Range className="absolute h-full bg-linear-to-r from-[#4ade80] to-[#22c55e] rounded-full" />
@@ -235,8 +235,10 @@ export default function BriefForm() {
               className="flex justify-between text-gray-500"
               style={{ fontSize: "12px" }}
             >
-              <span>До 500К</span>
-              <span>{babki} М</span>
+              <span>100К</span>
+              <span>
+                {babki[0] < 1 ? babki[0] * 1000 + " К" : babki[0] + " М"}
+              </span>
               <span>5M+</span>
             </div>
           </div>
