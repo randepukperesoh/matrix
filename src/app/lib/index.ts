@@ -14,7 +14,7 @@ export async function generateMetadata(): Promise<import("next").Metadata> {
       {
         cache: "force-cache",
         headers: {
-          "Cache-Control": `public, s-maxage=${3600}, stale-while-revalidate=86400`,
+          "Cache-Control": `public, s-maxage=${7200}, stale-while-revalidate=86400`,
         },
       }
     );
