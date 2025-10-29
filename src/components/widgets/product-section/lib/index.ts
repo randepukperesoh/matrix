@@ -34,7 +34,7 @@ export const getProducts = async () => {
   const response = await fetch(
     process.env.NEXT_PUBLIC_STRAPI + "/products?populate=*",
     {
-    //   cache: "force-cache",
+      cache: "force-cache",
       headers: {
         "Cache-Control": `public, s-maxage=${
           3600 * 24
