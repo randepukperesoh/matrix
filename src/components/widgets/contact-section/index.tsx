@@ -35,10 +35,7 @@ const contactInfo = [
 
 export function ContactSection() {
   return (
-    <section
-      id="contact"
-      className="bg-[#050505] py-12 md:py-24 px-6 relative overflow-hidden"
-    >
+    <section id="contact" className="bg-[#050505] p-6 relative overflow-hidden">
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute w-96 h-96 bg-[#4ade80]/5 rounded-full blur-3xl top-1/4 left-1/4" />
         <div className="absolute w-96 h-96 bg-[#4ade80]/5 rounded-full blur-3xl bottom-1/4 right-1/4" />

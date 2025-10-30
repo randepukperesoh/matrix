@@ -3,7 +3,7 @@ import { FunctionItem } from "@/components/functionItem";
 
 export const FunctionsList = ({ functions }: { functions: Function[] }) => {
   return (
-    <section className="bg-black py-24 px-6">
+    <section className="bg-black p-6">
       <div className="max-w-7xl mx-auto">
         <h2
           className="text-white mb-12"

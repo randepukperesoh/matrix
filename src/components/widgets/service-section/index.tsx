@@ -9,7 +9,7 @@ export async function ServicesSection() {
   return (
     <section
       id="services"
-      className="bg-[#050505] py-12 md:py-24 px-6 relative overflow-hidden"
+      className="bg-[#050505] p-6 relative overflow-hidden"
     >
       <div className="absolute inset-0 opacity-5">
         <div
@@ -24,12 +24,6 @@ export async function ServicesSection() {
 
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="text-center mb-16">
-          <div className="inline-block px-4 py-2 bg-[#4ade80]/10 border border-[#4ade80]/20 rounded-full mb-4">
-            <span className="text-[#4ade80]" style={{ fontSize: "14px" }}>
-              Наши услуги
-            </span>
-          </div>
-
           <h2
             className="text-white mb-4"
             style={{ fontSize: "48px", fontWeight: 600, lineHeight: 1.2 }}
@@ -40,7 +34,7 @@ export async function ServicesSection() {
             className="text-gray-400 mx-auto"
             style={{ fontSize: "18px", maxWidth: "700px" }}
           >
-            Наши услуги
+            Области нашей экспертизы
           </p>
         </div>
 

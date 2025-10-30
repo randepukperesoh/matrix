@@ -116,7 +116,7 @@ export default async function ProductPage({
 
       <FunctionsList functions={product.functions} />
 
-      <section className="bg-[#0a0a0a] py-24 px-6">
+      <section className="bg-[#0a0a0a] p-6">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             <TechList techList={product.techList} />

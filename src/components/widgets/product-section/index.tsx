@@ -10,7 +10,7 @@ export async function ProductsSection() {
   if (!response) return null;
 
   return (
-    <section id="products" className="py-12 md:py-24 px-6 w-full relative">
+    <section id="products" className="p-6 w-full relative">
       <div className="absolute inset-0">
         <MotionLight />
       </div>

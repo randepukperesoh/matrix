@@ -37,7 +37,7 @@ export async function CasesSection() {
   const cases = await getCases();
 
   return (
-    <section id="cases" className="bg-[#0a0a0a] py-12 md:py-24 px-6">
+    <section id="cases" className="bg-[#0a0a0a] p-6">
       <div className="max-w-7xl mx-auto">
         <div className="mb-16">
           <h2

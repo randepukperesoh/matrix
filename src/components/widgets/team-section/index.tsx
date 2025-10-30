@@ -50,7 +50,7 @@ export async function TeamSection() {
   const { teams: team, title, description } = response[0];
 
   return (
-    <section id="team" className="bg-[#000000] relative py-12 md:py-24 px-6">
+    <section id="team" className="bg-[#000000] relative p-6">
       <div className="absolute inset-0 overflow-hidden">
         <LightRain />
       </div>
