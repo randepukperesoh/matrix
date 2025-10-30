@@ -5,7 +5,7 @@ export { generateMetadata };
 
 export default function BriefPage() {
   return (
-    <div className="min-h-screen bg-black pt-24 pb-16 px-6 w-full">
+    <div className="min-h-screen bg-black p-6 w-full">
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute w-96 h-96 bg-[#4ade80]/10 rounded-full blur-3xl top-20 -left-20" />
         <div className="absolute w-96 h-96 bg-[#4ade80]/5 rounded-full blur-3xl bottom-20 -right-20" />

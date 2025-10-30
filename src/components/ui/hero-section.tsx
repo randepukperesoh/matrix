@@ -63,7 +63,7 @@ export async function HeroSection() {
     .join(" ");
 
   return (
-    <section className="relative bg-black min-h-screen flex items-center px-6 overflow-hidden">
+    <section className="relative bg-black flex items-center p-6 overflow-hidden">
       <div>
         <div className="bg-[#4ade80]/10 rounded-full blur-3xl top-20 -left-20" />
         <div className="bg-[#4ade80]/5 rounded-full blur-3xl bottom-20 -right-20" />

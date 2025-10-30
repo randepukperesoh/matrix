@@ -1,4 +1,3 @@
-import { Footer } from "@/components/ui/footer";
 import { HeroSection } from "@/components/ui/hero-section";
 import { CasesSection } from "@/components/widgets/cases-section";
 import { ContactSection } from "@/components/widgets/contact-section";
@@ -12,7 +11,7 @@ export { generateMetadata };
 
 const Home = async () => {
   return (
-    <div className="size-full bg-black mt-28 xl:mt-0">
+    <div className="size-full bg-black">
       <HeroSection />
       <ServicesSection />
       <ProductsSection />
@@ -20,7 +19,6 @@ const Home = async () => {
       <CasesSection />
       <TeamSection />
       <ContactSection />
-      <Footer />
     </div>
   );
 };

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { ReactNode } from "react";
+import { Footer } from "@/components/ui/footer";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -15,12 +16,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="font-sans grid items-center justify-items-center min-h-screen w-full bg-black text-white">
+      <body className="font-sans flex flex-col items-center justify-items-center min-h-screen w-full bg-black text-white">
         <Header />
-        <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start w-full">
+        <main className="flex flex-col gap-8 items-center sm:items-start w-full">
           {children}
         </main>
-        <footer></footer>
+        <Footer />
       </body>
     </html>
   );

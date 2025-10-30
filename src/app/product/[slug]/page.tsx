@@ -40,7 +40,7 @@ export default async function ProductPage({
 
   return (
     <div className="min-h-screen bg-black w-full">
-      <section className="relative bg-[#0a0a0a] pt-32 pb-24 px-6">
+      <section className="relative bg-[#0a0a0a] p-6">
         <div className="max-w-7xl mx-auto">
           <Link
             href="/"

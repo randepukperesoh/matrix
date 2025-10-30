@@ -18,7 +18,7 @@ export default async function CasePage({
   }
 
   return (
-    <section className="relative bg-black min-h-screen flex items-start px-6 overflow-hidden pt-24 w-full">
+    <section className="relative bg-black min-h-screen flex items-start p-6 overflow-hidden w-full">
       <div className="max-w-7xl mx-auto w-full relative z-10">
         <div className="absolute inset-0">
           <div className="absolute w-96 h-96 bg-[#4ade80]/10 rounded-full blur-3xl top-20 -left-20" />
