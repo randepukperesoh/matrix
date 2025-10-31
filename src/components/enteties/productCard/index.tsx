@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Users, BarChart3, Building2, Smartphone } from "lucide-react";
+import { Users, BarChart3, Building2, Smartphone, Fan } from "lucide-react";
 import { ProductItem } from "@/components/widgets/product-section";
 
 const iconMap = {
@@ -7,6 +7,7 @@ const iconMap = {
   BarChart3: BarChart3,
   Building2: Building2,
   Smartphone: Smartphone,
+  undefined: Fan,
 };
 
 const ProductCard = ({

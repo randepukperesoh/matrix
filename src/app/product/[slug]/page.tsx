@@ -6,6 +6,7 @@ import {
   BarChart3,
   Building2,
   Smartphone,
+  Fan,
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
@@ -22,6 +23,7 @@ const iconMap = {
   BarChart3: BarChart3,
   Building2: Building2,
   Smartphone: Smartphone,
+  undefined: Fan,
 };
 
 export default async function ProductPage({
