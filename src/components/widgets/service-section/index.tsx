@@ -1,5 +1,6 @@
 import { SectionCard } from "@/components/enteties/sectionCard";
 import { IServiceResponse, getMatrixService } from "./lib";
+import Link from "next/link";
 
 export { type IServiceResponse, getMatrixService };
 
@@ -22,7 +23,7 @@ export async function ServicesSection() {
         />
       </div>
 
-      <div className="max-w-7xl mx-auto relative z-10">
+      <div className="max-w-7xl mx-auto relative z-10 space-y-6">
         <div className="text-center mb-16">
           <h2
             className="text-white mb-4"
@@ -43,6 +44,17 @@ export async function ServicesSection() {
             <SectionCard key={"service_" + service.id} i={i} {...service} />
           ))}
         </div>
+
+        <Link href="/brief">
+          <button
+            style={{ cursor: "pointer" }}
+            className="bg-[#4ade80]/10 w-full p-4 rounded-2xl border border-[#4ade80] font-bold "
+          >
+            <span className="text-[#4ade80]" style={{ fontSize: "2rem" }}>
+              Поможем решить вашу задачу?
+            </span>
+          </button>
+        </Link>
       </div>
     </section>
   );
