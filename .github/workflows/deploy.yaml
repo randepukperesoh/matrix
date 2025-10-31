@@ -48,10 +48,8 @@ jobs:
           key: ${{ secrets.VPS_SSH_KEY }}
           script: |
             cd /var/www/matrix
-            # Остановить сервис перед обновлением
             sudo systemctl stop matrix.service || true
 
-            # Удалить старые файлы (оставить node_modules, если хотите сохранить зависимости)
             rm -rf .next public package.json next.config.js
 
       - name: Upload build to VPS

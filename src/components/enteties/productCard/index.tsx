@@ -9,7 +9,7 @@ const iconMap = {
   Smartphone: Smartphone,
 };
 
-export const ProductCard = ({
+const ProductCard = ({
   icon,
   id,
   description,
@@ -93,3 +93,5 @@ export const ProductCard = ({
     </Link>
   );
 };
+
+export default ProductCard;

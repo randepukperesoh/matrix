@@ -1,4 +1,4 @@
-import { ProductCard } from "@/components/enteties/productCard";
+import ProductCard from "@/components/enteties/productCard";
 import { Advantage, Function, ProductItem, Tech, getProducts } from "./lib";
 import MotionLight from "@/components/shared/backgrounds/light";
 
