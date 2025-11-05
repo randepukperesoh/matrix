@@ -25,6 +25,7 @@ const nextConfig = {
       {
         protocol: "http",
         hostname: "**.strapiapp.com",
+      }
     ],
   },
 };
