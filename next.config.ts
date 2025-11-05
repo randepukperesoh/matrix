@@ -7,7 +7,7 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'productive-success-86db1bbd31.media.strapiapp.com',
         // port: '1337',
-        pathname: '/**', 
+        // pathname: '/**', 
       },
     ],
   },
