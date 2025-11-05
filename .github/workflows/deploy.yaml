@@ -35,7 +35,7 @@ jobs:
           mkdir -p deploy
           cp -r .next deploy/
           cp -r public deploy/ 2>/dev/null || true
-          cp package.json next.config.js deploy/ 2>/dev/null || true
+          cp package.json next.config.ts deploy/ 2>/dev/null || true
 
       - name: Compress build
         run: tar -czf deploy.tar.gz -C deploy .
