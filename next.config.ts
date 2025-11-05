@@ -1,18 +1,32 @@
-import type { NextConfig } from "next";
+// import type { NextConfig } from "next";
 
-const nextConfig: NextConfig = {
+
+// const nextConfig: NextConfig = {
+//   images: {
+//     remotePatterns: [
+//       {
+//         protocol: 'https',
+//         hostname: 'productive-success-86db1bbd31.media.strapiapp.com',
+//         // port: '1337',
+//         // pathname: '/**', 
+//       },
+//     ],
+//   },
+// };
+
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   images: {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'productive-success-86db1bbd31.media.strapiapp.com',
-        // port: '1337',
-        // pathname: '/**', 
+        hostname: '**.strapiapp.com',
       },
     ],
   },
 };
 
+module.exports = nextConfig;
 
 
 export default nextConfig;
